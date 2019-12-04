@@ -35,9 +35,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-
-        <GitHubCalendar username={`${this.state.username}`} fullYear={false} />
-
+        <div className="calendar">
+          <GitHubCalendar username={`${this.state.username}`} fullYear={false} />
+        </div>
         <Users user={this.state.userData} />
         <FollowerList />
       </div>
