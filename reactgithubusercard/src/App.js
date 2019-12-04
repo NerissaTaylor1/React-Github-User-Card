@@ -13,7 +13,7 @@ class App extends React.Component {
 
   }
   componentDidMount() {
-    axios.get('https://api.github.com/users/nerissaj')
+    axios.get(`https://api.github.com/users/${this.state.username}`)
       .then(res => {
         // console.log(res.data);
         this.setState({ userData: res.data })
@@ -23,7 +23,7 @@ class App extends React.Component {
     //   if (prevState.followers !== this.state.followers) {
     //     console.log("new followers");
 
-    axios.get('https://api.github.com/users/nerissaj/followers')
+    axios.get(`https://api.github.com/users/${this.state.username}/followers`)
       .then(res => {
         console.log(res.data);
         this.setState({ followers: res.data })
@@ -34,9 +34,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <GitHubCalendar username=nerissaj fullYear={false} />
+        <GitHubCalendar username={`${this.state.username}`} fullYear={false} />
+
         <Users user={this.state.userData} />
-        <Followers followers={this.state.followers} />
+        {/* <Followers followers={this.state.followers} /> */}
 
 
       </div>
